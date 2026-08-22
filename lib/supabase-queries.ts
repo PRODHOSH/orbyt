@@ -4,6 +4,7 @@ const supabase = createClient();
 
 // ── Profiles ────────────────────────────────────────────
 export async function getProfile(userId: string) {
+  const supabase = createClient();
   const { data, error } = await supabase
     .from("profiles")
     .select("*")
@@ -13,6 +14,7 @@ export async function getProfile(userId: string) {
 }
 
 export async function getAllProfiles() {
+  const supabase = createClient();
   const { data, error } = await supabase
     .from("profiles")
     .select("*")
@@ -21,6 +23,7 @@ export async function getAllProfiles() {
 }
 
 export async function updateProfile(userId: string, updates: Record<string, any>) {
+  const supabase = createClient();
   const { data, error } = await supabase
     .from("profiles")
     .update({ ...updates, updated_at: new Date().toISOString() })
@@ -32,6 +35,7 @@ export async function updateProfile(userId: string, updates: Record<string, any>
 
 // ── Attendance ──────────────────────────────────────────
 export async function getAttendance(studentId: string) {
+  const supabase = createClient();
   const { data, error } = await supabase
     .from("attendance")
     .select("*")
@@ -41,6 +45,7 @@ export async function getAttendance(studentId: string) {
 }
 
 export async function getAttendanceSummary(studentId: string) {
+  const supabase = createClient();
   const { data, error } = await supabase
     .from("attendance")
     .select("subject, status")
@@ -66,12 +71,14 @@ export async function getAttendanceSummary(studentId: string) {
 }
 
 export async function markAttendance(records: { student_id: string; subject: string; status: string; marked_by: string }[]) {
+  const supabase = createClient();
   const { data, error } = await supabase.from("attendance").insert(records).select();
   return { data, error };
 }
 
 // ── Timetable ───────────────────────────────────────────
 export async function getTimetable(department: string, yearOfStudy: number) {
+  const supabase = createClient();
   const { data, error } = await supabase
     .from("timetable")
     .select("*, faculty:faculty_id(full_name)")
@@ -84,6 +91,7 @@ export async function getTimetable(department: string, yearOfStudy: number) {
 
 // ── Complaints ──────────────────────────────────────────
 export async function getComplaints(userId: string, role: string) {
+  const supabase = createClient();
   let query = supabase.from("complaints").select("*, submitter:submitted_by(full_name, role, department)");
 
   if (role === "student") {
@@ -109,6 +117,7 @@ export async function submitComplaint(complaint: {
 }
 
 export async function updateComplaintStatus(id: string, status: string, notes?: string) {
+  const supabase = createClient();
   const { data, error } = await supabase
     .from("complaints")
     .update({ status, resolution_notes: notes, updated_at: new Date().toISOString() })
@@ -120,6 +129,7 @@ export async function updateComplaintStatus(id: string, status: string, notes?: 
 
 // ── Transport ───────────────────────────────────────────
 export async function getTransportRoutes() {
+  const supabase = createClient();
   const { data, error } = await supabase
     .from("transport_routes")
     .select("*")
@@ -130,6 +140,7 @@ export async function getTransportRoutes() {
 
 // ── Hostel ──────────────────────────────────────────────
 export async function getHostelAllocation(studentId: string) {
+  const supabase = createClient();
   const { data, error } = await supabase
     .from("hostel_allocations")
     .select("*, room:room_id(hostel_block, room_number, floor, room_type)")
@@ -140,6 +151,7 @@ export async function getHostelAllocation(studentId: string) {
 }
 
 export async function getHostelComplaints(studentId: string) {
+  const supabase = createClient();
   const { data, error } = await supabase
     .from("hostel_complaints")
     .select("*")
@@ -149,6 +161,7 @@ export async function getHostelComplaints(studentId: string) {
 }
 
 export async function getAllHostelData() {
+  const supabase = createClient();
   const { data: rooms } = await supabase.from("hostel_rooms").select("*");
   const { data: allocations } = await supabase
     .from("hostel_allocations")
@@ -163,6 +176,7 @@ export async function getAllHostelData() {
 
 // ── Placements ──────────────────────────────────────────
 export async function getPlacementDrives() {
+  const supabase = createClient();
   const { data, error } = await supabase
     .from("placement_drives")
     .select("*")
@@ -171,6 +185,7 @@ export async function getPlacementDrives() {
 }
 
 export async function getMyApplications(studentId: string) {
+  const supabase = createClient();
   const { data, error } = await supabase
     .from("placement_applications")
     .select("*, drive:drive_id(*)")
@@ -179,6 +194,7 @@ export async function getMyApplications(studentId: string) {
 }
 
 export async function applyToDrive(driveId: string, studentId: string) {
+  const supabase = createClient();
   const { data, error } = await supabase
     .from("placement_applications")
     .insert({ drive_id: driveId, student_id: studentId })
@@ -189,6 +205,7 @@ export async function applyToDrive(driveId: string, studentId: string) {
 
 // ── Visitors ────────────────────────────────────────────
 export async function getVisitors(status?: string) {
+  const supabase = createClient();
   let query = supabase.from("visitors").select("*, approver:approved_by(full_name)");
   if (status) query = query.eq("status", status);
   const { data, error } = await query.order("created_at", { ascending: false });
@@ -207,6 +224,7 @@ export async function checkInVisitor(visitor: {
 }
 
 export async function checkOutVisitor(id: string) {
+  const supabase = createClient();
   const { data, error } = await supabase
     .from("visitors")
     .update({ status: "checked_out", check_out: new Date().toISOString() })
@@ -230,6 +248,7 @@ export async function triggerSOS(alert: {
 }
 
 export async function getSOSAlerts(status?: string) {
+  const supabase = createClient();
   let query = supabase.from("sos_alerts").select("*, triggered_user:triggered_by(full_name, department, phone_number)");
   if (status) query = query.eq("status", status);
   const { data, error } = await query.order("created_at", { ascending: false });
@@ -250,6 +269,7 @@ export async function reportIncident(incident: {
 }
 
 export async function getSafetyIncidents(role: string, userId?: string) {
+  const supabase = createClient();
   let query = supabase.from("safety_incidents").select("*, reporter:reporter_id(full_name, department)");
   if (role === "student" && userId) query = query.eq("reporter_id", userId);
   const { data, error } = await query.order("reported_at", { ascending: false });
@@ -258,6 +278,7 @@ export async function getSafetyIncidents(role: string, userId?: string) {
 
 // ── Leave Requests ──────────────────────────────────────
 export async function getLeaveRequests(role: string, userId: string) {
+  const supabase = createClient();
   let query = supabase.from("leave_requests").select("*, student:student_id(full_name, department, year_of_study), reviewer:reviewed_by(full_name)");
   if (role === "student") query = query.eq("student_id", userId);
   const { data, error } = await query.order("created_at", { ascending: false });
@@ -276,6 +297,7 @@ export async function submitLeaveRequest(leave: {
 }
 
 export async function reviewLeaveRequest(id: string, status: "approved" | "rejected", reviewedBy: string, notes?: string) {
+  const supabase = createClient();
   const { data, error } = await supabase
     .from("leave_requests")
     .update({ status, reviewed_by: reviewedBy, review_notes: notes })
@@ -287,6 +309,7 @@ export async function reviewLeaveRequest(id: string, status: "approved" | "rejec
 
 // ── Fees ────────────────────────────────────────────────
 export async function getStudentFees(studentId: string) {
+  const supabase = createClient();
   const { data, error } = await supabase
     .from("fees")
     .select("*")
@@ -297,6 +320,7 @@ export async function getStudentFees(studentId: string) {
 
 // ── Clubs ───────────────────────────────────────────────
 export async function getClubs(recruitingOnly?: boolean) {
+  const supabase = createClient();
   let query = supabase.from("clubs").select("*");
   if (recruitingOnly) query = query.eq("is_recruiting", true);
   const { data, error } = await query.order("name");
@@ -305,6 +329,7 @@ export async function getClubs(recruitingOnly?: boolean) {
 
 // ── Exam Schedule ───────────────────────────────────────
 export async function getExamSchedule(department: string, yearOfStudy: number) {
+  const supabase = createClient();
   const { data, error } = await supabase
     .from("exam_schedule")
     .select("*")
@@ -317,6 +342,7 @@ export async function getExamSchedule(department: string, yearOfStudy: number) {
 
 // ── Announcements ───────────────────────────────────────
 export async function getAnnouncements(role?: string) {
+  const supabase = createClient();
   let query = supabase.from("announcements").select("*, author:author_id(full_name, role)");
   if (role) {
     query = query.or(`target_role.eq.all,target_role.eq.${role}`);
@@ -338,6 +364,7 @@ export async function createAnnouncement(announcement: {
 
 // ── Dashboard Stats ─────────────────────────────────────
 export async function getAdminDashboardStats() {
+  const supabase = createClient();
   const [
     { count: totalStudents },
     { count: totalEmployees },

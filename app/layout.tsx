@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Sora } from "next/font/google";
 import { Providers } from "@/components/Providers";
 import Navbar from "@/components/Navbar";
+import Preloader from "@/components/Preloader";
 import "./globals.css";
 
 const sora = Sora({
@@ -41,6 +42,7 @@ export default function RootLayout({
       style={{ fontSize: "90%" }}
     >
       <body className="min-h-full flex flex-col relative overflow-x-hidden">
+        <Preloader />
         <Providers>
           <Navbar />
           {children}

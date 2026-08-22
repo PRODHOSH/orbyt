@@ -1,0 +1,17 @@
+# ORBYT - The Intelligent Campus OS
+
+ORBYT is a unified, AI-powered Smart College ERP and Campus Safety Platform. It replaces disjointed portals with a single intelligence layer that brings academics, campus services, and institutional safety into a unified operating system.
+
+## Key Features
+- **Unified Academic & Operational Dashboards**: Centralized role-based portals for students, employees, and administrators to manage attendance, timetables, exams, fees, and clubs.
+- **Integrated Campus Safety Layer**: Real-time incident reporting, SOS alerts, and emergency response workflows directly connected to campus administration and security.
+- **AI-Powered Discovery & Assistance**: A context-aware intelligence layer that parses official institutional handbooks, matches students to relevant opportunities, and provides instant answers backed by official citations.
+
+## Technical Architecture
+ORBYT leverages a modern, server-first architecture tailored for security and speed, utilizing Next.js 16 (App Router), React 19, Tailwind CSS v4, and Supabase (PostgreSQL, Row Level Security, Authentication). Data access is strictly controlled at the database level via Supabase RLS.
+
+## Target Audience
+- Students
+- Faculty & Employees
+- Campus Administration
+- Campus Safety & Security Personnel

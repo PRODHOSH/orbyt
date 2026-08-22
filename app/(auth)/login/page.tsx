@@ -35,20 +35,20 @@ export default function LoginPage() {
           className="mx-auto w-full max-w-sm lg:w-96 my-auto"
         >
           <div className="mb-5">
-            <h2 className="text-xl sm:text-2xl font-bold font-sora text-slate-900 dark:text-white mb-1.5">Welcome Back</h2>
-            <p className="text-slate-500 dark:text-slate-400 text-xs">Please enter your details to sign in.</p>
+            <h2 className="text-xl sm:text-2xl font-bold font-sora text-slate-900  mb-1.5">Welcome Back</h2>
+            <p className="text-slate-500  text-xs">Please enter your details to sign in.</p>
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-4">
             {error && (
-              <div className="p-3 bg-red-50 dark:bg-red-900/30 border border-red-200 dark:border-red-800 rounded-xl text-red-600 dark:text-red-400 text-sm text-center">
+              <div className="p-3 bg-red-50  border border-red-200  rounded-xl text-red-600  text-sm text-center">
                 {error}
               </div>
             )}
 
             <div className="space-y-3">
               <div>
-                <label className="block text-xs font-medium text-slate-700 dark:text-slate-300 mb-1">Email</label>
+                <label className="block text-xs font-medium text-slate-700  mb-1">Email</label>
                 <div className="relative">
                   <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                     <Mail className="h-4 w-4 text-slate-400" />
@@ -57,7 +57,7 @@ export default function LoginPage() {
                     type="email"
                     name="email"
                     required
-                    className="block w-full pl-9 pr-3 py-2.5 border border-slate-200 dark:border-slate-700 rounded-lg bg-slate-50 dark:bg-slate-800/50 text-slate-900 dark:text-white text-sm placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#273E57] focus:border-transparent transition-all"
+                    className="block w-full pl-9 pr-3 py-2.5 border border-slate-200  rounded-lg bg-slate-50  text-slate-900  text-sm placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#273E57] focus:border-transparent transition-all"
                     placeholder="Enter your email"
                   />
                 </div>
@@ -65,8 +65,8 @@ export default function LoginPage() {
 
               <div>
                 <div className="flex justify-between items-center mb-1">
-                  <label className="block text-xs font-medium text-slate-700 dark:text-slate-300">Password</label>
-                  <Link href="#" className="text-xs font-medium text-[#273E57] dark:text-blue-400 hover:underline">Forgot?</Link>
+                  <label className="block text-xs font-medium text-slate-700 ">Password</label>
+                  <Link href="#" className="text-xs font-medium text-[#273E57]  hover:underline">Forgot?</Link>
                 </div>
                 <div className="relative">
                   <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -76,7 +76,7 @@ export default function LoginPage() {
                     type="password"
                     name="password"
                     required
-                    className="block w-full pl-9 pr-3 py-2.5 border border-slate-200 dark:border-slate-700 rounded-lg bg-slate-50 dark:bg-slate-800/50 text-slate-900 dark:text-white text-sm placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#273E57] focus:border-transparent transition-all"
+                    className="block w-full pl-9 pr-3 py-2.5 border border-slate-200  rounded-lg bg-slate-50  text-slate-900  text-sm placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#273E57] focus:border-transparent transition-all"
                     placeholder="••••••••"
                   />
                 </div>
@@ -99,10 +99,10 @@ export default function LoginPage() {
           <div className="mt-6">
             <div className="relative">
               <div className="absolute inset-0 flex items-center">
-                <div className="w-full border-t border-slate-200 dark:border-slate-700" />
+                <div className="w-full border-t border-slate-200 " />
               </div>
               <div className="relative flex justify-center text-sm">
-                <span className="px-3 bg-slate-50 dark:bg-slate-950 text-slate-500 font-medium">or</span>
+                <span className="px-3 bg-slate-50  text-slate-500 font-medium">or</span>
               </div>
             </div>
 
@@ -110,7 +110,7 @@ export default function LoginPage() {
               <form action={signInWithGoogle}>
                 <button
                   type="submit"
-                  className="w-full flex items-center justify-center py-2.5 px-4 border border-slate-200 dark:border-slate-700 rounded-lg shadow-sm bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#273E57] transition-all text-sm font-medium active:scale-[0.98]"
+                  className="w-full flex items-center justify-center py-2.5 px-4 border border-slate-200  rounded-lg shadow-sm bg-white  text-slate-700  hover:bg-slate-50 :bg-slate-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#273E57] transition-all text-sm font-medium active:scale-[0.98]"
                 >
                   <svg className="h-4 w-4 mr-2.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
@@ -124,9 +124,9 @@ export default function LoginPage() {
             </div>
           </div>
 
-          <p className="mt-5 text-center text-xs text-slate-600 dark:text-slate-400">
+          <p className="mt-5 text-center text-xs text-slate-600 ">
             Don't have an account?{' '}
-            <Link href="/register" className="font-semibold text-[#273E57] dark:text-blue-400 hover:underline">
+            <Link href="/register" className="font-semibold text-[#273E57]  hover:underline">
               Sign up
             </Link>
           </p>
@@ -134,7 +134,7 @@ export default function LoginPage() {
       </div>
 
       {/* Right Column - Graphic */}
-      <div className="hidden lg:flex flex-1 relative bg-[#273E57]/5 dark:bg-slate-900 border-l border-slate-200 dark:border-slate-800 items-center justify-center p-12 overflow-hidden">
+      <div className="hidden lg:flex flex-1 relative bg-[#273E57]/5  border-l border-slate-200  items-center justify-center p-12 overflow-hidden">
         {/* Background Gradients */}
         <div className="absolute top-0 right-0 w-full h-full bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-[#273E57]/10 via-transparent to-transparent pointer-events-none"></div>
         <div className="absolute bottom-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-[#273E57]/10 via-transparent to-transparent pointer-events-none"></div>
@@ -154,8 +154,8 @@ export default function LoginPage() {
               priority
             />
           </div>
-          <h3 className="text-xl font-bold text-slate-900 dark:text-white font-sora mb-2">Enterprise-Grade Security</h3>
-          <p className="text-slate-600 dark:text-slate-400 max-w-sm mx-auto text-sm leading-relaxed">
+          <h3 className="text-xl font-bold text-slate-900  font-sora mb-2">Enterprise-Grade Security</h3>
+          <p className="text-slate-600  max-w-sm mx-auto text-sm leading-relaxed">
             Your data is protected with industry-leading encryption and robust access controls.
           </p>
         </motion.div>

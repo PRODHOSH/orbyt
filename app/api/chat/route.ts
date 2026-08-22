@@ -16,7 +16,7 @@ export async function POST(req: Request) {
     }
 
     const model = genAI.getGenerativeModel({ 
-      model: "gemini-2.5-flash",
+      model: "gemini-1.5-flash",
       systemInstruction: `You are ORBYT, an intelligent AI campus agent. Your goal is to help students and faculty by answering questions based on campus data. 
       Tone: Professional, helpful, concise.
       Rules:

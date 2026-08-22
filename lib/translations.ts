@@ -21,7 +21,7 @@ export const TRANSLATIONS: Record<Language, Record<string, any>> = {
     "hero.secondaryCta": "Explore Campus",
     "hero.applicationsOpen": "One Campus. One Intelligence Layer.",
     "hero.textB": "Built for students. Powered by campus intelligence.",
-    "hero.headingWords": ["Your", "Entire", "Campus,", "Finally", "In One Place."],
+    "hero.headingWords": ["Run", "Your", "Entire", "Campus", "On Autopilot."],
 
     // About
     "about.pill": "THE CORE MESSAGE",
@@ -170,10 +170,10 @@ export const TRANSLATIONS: Record<Language, Record<string, any>> = {
     "faq.a5": "Yes. All student data is encrypted at rest and in transit. Safety reports can be submitted anonymously or with confidential escalation, routing directly to campus security or medical teams without delay.",
 
     // CTA
-    "cta.title1": "YOUR CAMPUS IS FULL OF INFORMATION.",
-    "cta.title2": "ORBYT MAKES IT INTELLIGENT.",
-    "cta.desc": "Ask about your academics. Discover opportunities. Understand campus rules. Build your career. Stay informed. Stay safe.",
-    "cta.btn": "ENTER YOUR CAMPUS",
+    "cta.title1": "STOP MANAGING YOUR CAMPUS.",
+    "cta.title2": "START MASTERING IT.",
+    "cta.desc": "Unify your academics, opportunities, and safety protocols into a single, intelligent operating system.",
+    "cta.btn": "EXPERIENCE ORBYT",
     "cta.sub": "ONE CAMPUS. ONE INTELLIGENCE LAYER.",
     "nav.login": "LOGIN",
 
