@@ -108,7 +108,7 @@ export default function Navbar() {
             href="/login"
             className="hidden sm:inline-flex items-center text-xs tracking-wider text-slate-700 hover:text-[#273E57] font-bold px-2 sm:px-4 transition-colors"
           >
-            LOGIN
+            {t("nav.login")}
           </Link>
 
           {/* Quick CTA */}
@@ -182,7 +182,7 @@ export default function Navbar() {
                 onClick={() => setIsMobileMenuOpen(false)}
                 className="flex items-center justify-center gap-2 text-base text-[#273E57] bg-white border border-[#273E57] py-3.5 rounded-full hover:bg-slate-50 transition-colors font-bold"
               >
-                LOGIN
+                {t("nav.login")}
               </Link>
               <Link
                 href="/#about"

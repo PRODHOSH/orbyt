@@ -1,6 +1,9 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
 import { Sparkles, Mail } from "lucide-react";
+import { useLanguage } from "@/context/LanguageContext";
 
 const GithubIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -24,6 +27,8 @@ const LinkedinIcon = () => (
 );
 
 export default function Footer() {
+  const { t } = useLanguage();
+
   return (
     <footer className="relative bg-slate-50 text-black px-5 sm:px-8 md:px-12 pt-16 pb-36 md:pt-24 md:pb-48 font-semibold uppercase tracking-widest text-xs sm:text-sm border-t border-black/5 overflow-hidden">
       <div className="relative z-10 max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 lg:gap-8">
@@ -36,12 +41,12 @@ export default function Footer() {
             </div>
             <div className="flex flex-col">
               <span className="text-xl text-slate-900 tracking-tight font-extrabold leading-none">ORBYT</span>
-              <span className="text-[9px] text-[#273E57] font-bold tracking-widest mt-0.5">THE INTELLIGENT CAMPUS OS</span>
+              <span className="text-[9px] text-[#273E57] font-bold tracking-widest mt-0.5">{t("footer.subtitle")}</span>
             </div>
           </div>
 
           <p className="normal-case font-medium text-xs text-slate-600 max-w-sm leading-relaxed">
-            One campus. One intelligence layer. Bringing student academics, campus services, club recruitments, and institutional safety into a unified operating system.
+            {t("footer.desc")}
           </p>
 
           <div className="flex gap-3">
@@ -61,42 +66,42 @@ export default function Footer() {
 
           <div className="mt-2 flex flex-col gap-2">
             <span className="opacity-60 text-[10px] font-bold tracking-widest text-slate-700">
-              Students &bull; Faculty &bull; Administration &bull; Clubs &bull; Campus Safety
+              {t("footer.roles")}
             </span>
             <span className="opacity-50 text-[10px] font-bold tracking-widest text-slate-500">
-              &copy; {new Date().getFullYear()} ORBYT. Built for smarter campuses.
+              &copy; {new Date().getFullYear()} {t("footer.copyright")}
             </span>
           </div>
         </div>
 
         {/* Modules Column */}
         <div className="flex flex-col gap-4 text-black/70">
-          <span className="opacity-40 mb-2 text-black text-[10px] font-bold">Campus Modules</span>
-          <Link href="/#about" className="hover:text-[#273E57] transition-colors">Core Message</Link>
-          <Link href="/#process" className="hover:text-[#273E57] transition-colors">Beyond Chat</Link>
-          <Link href="/#elite-perks" className="hover:text-[#273E57] transition-colors">Academic Intelligence</Link>
-          <Link href="/#elite-perks" className="hover:text-[#273E57] transition-colors">Club & Opportunities</Link>
-          <Link href="/#elite-perks" className="hover:text-[#273E57] transition-colors">AI Resume Studio</Link>
+          <span className="opacity-40 mb-2 text-black text-[10px] font-bold">{t("footer.modules")}</span>
+          <Link href="/#about" className="hover:text-[#273E57] transition-colors">{t("footer.modules.1")}</Link>
+          <Link href="/#process" className="hover:text-[#273E57] transition-colors">{t("footer.modules.2")}</Link>
+          <Link href="/#elite-perks" className="hover:text-[#273E57] transition-colors">{t("footer.modules.3")}</Link>
+          <Link href="/#elite-perks" className="hover:text-[#273E57] transition-colors">{t("footer.modules.4")}</Link>
+          <Link href="/#elite-perks" className="hover:text-[#273E57] transition-colors">{t("footer.modules.5")}</Link>
         </div>
 
         {/* Systems Column */}
         <div className="flex flex-col gap-4 text-black/70">
-          <span className="opacity-40 mb-2 text-black text-[10px] font-bold">Institutional</span>
-          <Link href="/#elite-perks" className="hover:text-[#273E57] transition-colors">Campus Safety Layer</Link>
-          <Link href="/#elite-perks" className="hover:text-[#273E57] transition-colors">Regulations & Handbooks</Link>
-          <Link href="/#process" className="hover:text-[#273E57] transition-colors">The Orbyt Workflow</Link>
-          <Link href="/#elite-perks" className="hover:text-[#273E57] transition-colors">Macro Analytics</Link>
-          <Link href="/#faq" className="hover:text-[#273E57] transition-colors">Security & Privacy</Link>
+          <span className="opacity-40 mb-2 text-black text-[10px] font-bold">{t("footer.inst")}</span>
+          <Link href="/#elite-perks" className="hover:text-[#273E57] transition-colors">{t("footer.inst.1")}</Link>
+          <Link href="/#elite-perks" className="hover:text-[#273E57] transition-colors">{t("footer.inst.2")}</Link>
+          <Link href="/#process" className="hover:text-[#273E57] transition-colors">{t("footer.inst.3")}</Link>
+          <Link href="/#elite-perks" className="hover:text-[#273E57] transition-colors">{t("footer.inst.4")}</Link>
+          <Link href="/#faq" className="hover:text-[#273E57] transition-colors">{t("footer.inst.5")}</Link>
         </div>
 
         {/* Dashboards */}
         <div className="flex flex-col gap-4 text-black/70">
-          <span className="opacity-40 mb-2 text-black text-[10px] font-bold">Dashboards</span>
-          <Link href="/dashboard/student" className="hover:text-[#273E57] transition-colors">Student Portal</Link>
-          <Link href="/dashboard/employee" className="hover:text-[#273E57] transition-colors">Employee Portal</Link>
-          <Link href="/dashboard/admin" className="hover:text-[#273E57] transition-colors">Admin Command Center</Link>
-          <Link href="/dashboard/admin/safety" className="hover:text-[#273E57] transition-colors">Safety Monitor</Link>
-          <Link href="/dashboard/admin/visitors" className="hover:text-[#273E57] transition-colors">Visitor Management</Link>
+          <span className="opacity-40 mb-2 text-black text-[10px] font-bold">{t("footer.dashboards")}</span>
+          <Link href="/dashboard/student" className="hover:text-[#273E57] transition-colors">{t("footer.dash.1")}</Link>
+          <Link href="/dashboard/employee" className="hover:text-[#273E57] transition-colors">{t("footer.dash.2")}</Link>
+          <Link href="/dashboard/admin" className="hover:text-[#273E57] transition-colors">{t("footer.dash.3")}</Link>
+          <Link href="/dashboard/admin/safety" className="hover:text-[#273E57] transition-colors">{t("footer.dash.4")}</Link>
+          <Link href="/dashboard/admin/visitors" className="hover:text-[#273E57] transition-colors">{t("footer.dash.5")}</Link>
         </div>
       </div>
 

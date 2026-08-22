@@ -1,36 +1,24 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ORBYT - The Intelligent Campus OS
 
-## Getting Started
+## The Problem
 
-First, run the development server:
+Educational institutions struggle with fragmentation. Core operations run on dozens of disconnected systems—from attendance and fee portals to hostel management, placement trackers, and scattered communication channels like emails and WhatsApp groups. 
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Simultaneously, campuses require strict safety measures, including emergency communication, women's safety protocols, incident reporting, and visitor management. Currently, these safety and operational layers are isolated from one another, leading to delayed emergency responses, inaccessible administrative information, and a poor experience for students, faculty, and administrators.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Proposed Solution
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+**ORBYT** is a unified, AI-powered Smart College ERP & Campus Safety Platform. It replaces disjointed portals with a single intelligence layer that brings academics, campus services, and institutional safety into a unified operating system.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Instead of navigating multiple systems, students and staff can manage their campus life from one centralized platform:
+- **Unified Academic & Operational Dashboards:** Centralized role-based portals for students, employees, and administrators to manage attendance, timetables, exams, fees, and clubs.
+- **Integrated Campus Safety Layer:** Real-time incident reporting, SOS alerts, and emergency response workflows directly connected to campus administration and security.
+- **AI-Powered Discovery & Assistance:** A context-aware intelligence layer that parses official institutional handbooks, matches students to relevant opportunities, and provides instant answers backed by official citations.
 
-## Learn More
+## Team: Black Squad
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **Prodhosh V S** - Lead
+  - Software Engineer Intern at Annexra
+  - Ex-intern at Sindra and Enlighted (Developer)
+  - CTO of BSPrep - IITM BS Community
+- **Mohamed Nawaz**
