@@ -5,14 +5,13 @@ import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "framer-
 import { ArrowUpRight, X, Globe, Sparkles } from "lucide-react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import { useLanguage } from "@/context/LanguageContext";
 
 const NAV_LINKS = [
   { key: "nav.about", href: "/#about" },
   { key: "nav.workflow", href: "/#process" },
   { key: "nav.modules", href: "/#elite-perks" },
-  { key: "nav.safety", href: "/#timeline" },
-  { key: "nav.pillars", href: "/#benefits" },
   { key: "nav.faq", href: "/#faq" },
 ];
 
@@ -29,8 +28,8 @@ export default function Navbar() {
     setIsTop(latest < 50);
   });
 
-  // Hide entirely on dashboard routes if any exist later
-  if (pathname?.startsWith("/dashboard") || pathname?.startsWith("/admin")) {
+  // Hide entirely on dashboard and onboarding routes
+  if (pathname?.startsWith("/dashboard") || pathname?.startsWith("/admin") || pathname?.startsWith("/onboarding")) {
     return null;
   }
 
@@ -48,8 +47,8 @@ export default function Navbar() {
       >
         <Link href="/">
           <div className="flex items-center gap-2.5 sm:gap-3 cursor-pointer group">
-            <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-br from-[#1E293B] to-[#273E57] flex items-center justify-center text-white shadow-md group-hover:scale-105 transition-transform">
-              <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 text-indigo-300" />
+            <div className="relative w-8 h-8 sm:w-10 sm:h-10 rounded-xl overflow-hidden shadow-md group-hover:scale-105 transition-transform">
+              <Image src="/logo.jpg" alt="Orbyt Logo" fill sizes="40px" className="object-cover" />
             </div>
             <div className="flex flex-col">
               <span className="text-xl sm:text-2xl tracking-tighter font-extrabold text-slate-900 leading-none">
@@ -104,6 +103,14 @@ export default function Navbar() {
             </AnimatePresence>
           </div>
 
+          {/* Login Link */}
+          <Link
+            href="/login"
+            className="hidden sm:inline-flex items-center text-xs tracking-wider text-slate-700 hover:text-[#273E57] font-bold px-2 sm:px-4 transition-colors"
+          >
+            LOGIN
+          </Link>
+
           {/* Quick CTA */}
           <Link
             href="/#about"
@@ -139,8 +146,8 @@ export default function Navbar() {
             {/* Top Row */}
             <div className="flex justify-between items-center">
               <div className="flex items-center gap-3">
-                <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-[#1E293B] to-[#273E57] flex items-center justify-center text-white">
-                  <Sparkles className="w-4 h-4 text-indigo-300" />
+                <div className="relative w-8 h-8 rounded-xl overflow-hidden shadow-md">
+                  <Image src="/logo.jpg" alt="Orbyt Logo" fill sizes="40px" className="object-cover" />
                 </div>
                 <span className="text-xl sm:text-2xl tracking-tighter font-extrabold text-black">ORBYT</span>
               </div>
@@ -170,6 +177,13 @@ export default function Navbar() {
 
             {/* Bottom CTA */}
             <div className="mt-auto pt-8 flex flex-col gap-3">
+              <Link
+                href="/login"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="flex items-center justify-center gap-2 text-base text-[#273E57] bg-white border border-[#273E57] py-3.5 rounded-full hover:bg-slate-50 transition-colors font-bold"
+              >
+                LOGIN
+              </Link>
               <Link
                 href="/#about"
                 onClick={() => setIsMobileMenuOpen(false)}

@@ -35,42 +35,58 @@ export async function updateSession(request: NextRequest) {
     data: { user },
   } = await supabase.auth.getUser()
 
-  if (
-    !user &&
-    request.nextUrl.pathname.startsWith('/dashboard')
-  ) {
-    // no user, potentially respond by redirecting the user to the login page
+  const path = request.nextUrl.pathname;
+
+  // ──────────────────────────────────────────────
+  // 1. UNAUTHENTICATED user trying to access /dashboard → send to /login
+  // ──────────────────────────────────────────────
+  if (!user && path.startsWith('/dashboard')) {
     const url = request.nextUrl.clone()
     url.pathname = '/login'
     return NextResponse.redirect(url)
   }
 
-  // Role based routing
-  if (user && request.nextUrl.pathname.startsWith('/dashboard')) {
-      const role = user.user_metadata?.role;
-      const path = request.nextUrl.pathname;
-      
-      // If they are on a dashboard path that doesn't match their role
-      if (role && !path.startsWith(`/dashboard/${role}`)) {
-          const url = request.nextUrl.clone()
-          url.pathname = `/dashboard/${role}`
-          return NextResponse.redirect(url)
-      }
-      
-      // If they are just on /dashboard, redirect to their role dashboard
-      if (path === '/dashboard') {
-          const url = request.nextUrl.clone()
-          url.pathname = role ? `/dashboard/${role}` : '/login'
-          return NextResponse.redirect(url)
-      }
-  }
+  // ──────────────────────────────────────────────
+  // 2. AUTHENTICATED user logic
+  // ──────────────────────────────────────────────
+  if (user) {
+    const role = user.user_metadata?.role;
+    const isOnboarded = user.user_metadata?.is_onboarded === true;
 
-  // If user is logged in and visits login or register, redirect to dashboard
-  if (user && (request.nextUrl.pathname === '/login' || request.nextUrl.pathname === '/register')) {
-      const role = user.user_metadata?.role;
+    // 2a. If on /login or /register, redirect away (they're already logged in)
+    if (path === '/login' || path === '/register') {
       const url = request.nextUrl.clone()
-      url.pathname = role ? `/dashboard/${role}` : '/dashboard'
+      if (!isOnboarded) {
+        url.pathname = '/onboarding'
+      } else {
+        url.pathname = role ? `/dashboard/${role}` : '/dashboard/student'
+      }
       return NextResponse.redirect(url)
+    }
+
+    // 2b. If on /dashboard and NOT onboarded → send to /onboarding
+    if (path.startsWith('/dashboard') && !isOnboarded) {
+      const url = request.nextUrl.clone()
+      url.pathname = '/onboarding'
+      return NextResponse.redirect(url)
+    }
+
+    // 2c. If on /onboarding but ALREADY onboarded → send to dashboard
+    if (path === '/onboarding' && isOnboarded) {
+      const url = request.nextUrl.clone()
+      url.pathname = role ? `/dashboard/${role}` : '/dashboard/student'
+      return NextResponse.redirect(url)
+    }
+
+    // 2d. If on exactly /dashboard (no sub-path), redirect to role dashboard
+    if (path === '/dashboard' && isOnboarded) {
+      const url = request.nextUrl.clone()
+      url.pathname = role ? `/dashboard/${role}` : '/dashboard/student'
+      return NextResponse.redirect(url)
+    }
+
+    // 2e. ALL other /dashboard/* paths (like /dashboard/orbyt-ai, /dashboard/admin/knowledge)
+    //     → ALLOW through. Do NOT force-redirect to role path.
   }
 
   return supabaseResponse

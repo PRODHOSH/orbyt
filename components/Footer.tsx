@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Sparkles, Mail } from "lucide-react";
 
 const GithubIcon = () => (
@@ -30,8 +31,8 @@ export default function Footer() {
         {/* Brand Column */}
         <div className="flex flex-col gap-6 lg:col-span-2">
           <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-[#1E293B] to-[#273E57] flex items-center justify-center text-white shadow-sm">
-              <Sparkles className="w-4 h-4 text-indigo-300" />
+            <div className="relative w-9 h-9 rounded-xl overflow-hidden shadow-sm">
+              <Image src="/logo.jpg" alt="Orbyt Logo" fill className="object-cover" />
             </div>
             <div className="flex flex-col">
               <span className="text-xl text-slate-900 tracking-tight font-extrabold leading-none">ORBYT</span>
@@ -81,21 +82,21 @@ export default function Footer() {
         {/* Systems Column */}
         <div className="flex flex-col gap-4 text-black/70">
           <span className="opacity-40 mb-2 text-black text-[10px] font-bold">Institutional</span>
-          <Link href="/#timeline" className="hover:text-[#273E57] transition-colors">Campus Safety Layer</Link>
-          <Link href="/#features" className="hover:text-[#273E57] transition-colors">Regulations & Handbooks</Link>
-          <Link href="/#benefits" className="hover:text-[#273E57] transition-colors">The 4 Pillars</Link>
+          <Link href="/#elite-perks" className="hover:text-[#273E57] transition-colors">Campus Safety Layer</Link>
+          <Link href="/#elite-perks" className="hover:text-[#273E57] transition-colors">Regulations & Handbooks</Link>
+          <Link href="/#process" className="hover:text-[#273E57] transition-colors">The Orbyt Workflow</Link>
           <Link href="/#elite-perks" className="hover:text-[#273E57] transition-colors">Macro Analytics</Link>
           <Link href="/#faq" className="hover:text-[#273E57] transition-colors">Security & Privacy</Link>
         </div>
 
-        {/* Legal & Standards */}
+        {/* Dashboards */}
         <div className="flex flex-col gap-4 text-black/70">
-          <span className="opacity-40 mb-2 text-black text-[10px] font-bold">Trust & Governance</span>
-          <a href="#" className="hover:text-[#273E57] transition-colors">Institutional Privacy</a>
-          <a href="#" className="hover:text-[#273E57] transition-colors">Terms of Service</a>
-          <a href="#" className="hover:text-[#273E57] transition-colors">Data Encryption</a>
-          <a href="#" className="hover:text-[#273E57] transition-colors">Source Verification</a>
-          <a href="#" className="hover:text-[#273E57] transition-colors">Incident Protocols</a>
+          <span className="opacity-40 mb-2 text-black text-[10px] font-bold">Dashboards</span>
+          <Link href="/dashboard/student" className="hover:text-[#273E57] transition-colors">Student Portal</Link>
+          <Link href="/dashboard/employee" className="hover:text-[#273E57] transition-colors">Employee Portal</Link>
+          <Link href="/dashboard/admin" className="hover:text-[#273E57] transition-colors">Admin Command Center</Link>
+          <Link href="/dashboard/admin/safety" className="hover:text-[#273E57] transition-colors">Safety Monitor</Link>
+          <Link href="/dashboard/admin/visitors" className="hover:text-[#273E57] transition-colors">Visitor Management</Link>
         </div>
       </div>
 

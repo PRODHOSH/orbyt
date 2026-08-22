@@ -27,7 +27,7 @@ export const TRANSLATIONS: Record<Language, Record<string, any>> = {
     "about.pill": "THE CORE MESSAGE",
     "about.title1": "STOP SEARCHING,",
     "about.title2": "START ASKING.",
-    "about.desc": "College information is everywhere. Your attendance is in one portal. Academic rules are buried inside PDFs. Club recruitments appear in WhatsApp groups. Important announcements get lost in email. Deadlines are scattered across different platforms. Your resume lives somewhere else. ORBYT brings it together. Ask a question in plain language, get an answer based on your actual student data and official campus information, and take action without navigating through multiple systems.",
+    "about.desc": "College data is scattered across portals, PDFs, and group chats. ORBYT brings everything together into one intelligent layer. Ask a question in plain language, get an answer based on your official student data, and take action instantly—all without navigating multiple systems.",
     "about.btn": "EXPLORE CAMPUS",
 
     // Marquee
@@ -203,7 +203,7 @@ export const TRANSLATIONS: Record<Language, Record<string, any>> = {
     "about.pill": "मूल संदेश",
     "about.title1": "खोजना बंद करें,",
     "about.title2": "पूछना शुरू करें।",
-    "about.desc": "कॉलेज की जानकारी हर जगह बिखरी है—उपस्थिति एक पोर्टल में, शैक्षणिक नियम 80-पेज के पीडीएफ में, क्लब की जानकारी व्हाट्सएप ग्रुप में और सूचनाएं ईमेल में। ORBYT इन सभी को एक साथ लाता है। सरल भाषा में सवाल पूछें, आधिकारिक डेटा पर आधारित उत्तर पाएं और सीधे कार्रवाई करें।",
+    "about.desc": "कॉलेज की जानकारी पोर्टल्स, पीडीएफ और ग्रुप चैट्स में बिखरी हुई है। ORBYT इन सभी को एक बुद्धिमान मंच पर लाता है। बस सरल भाषा में पूछें, आधिकारिक डेटा पर आधारित उत्तर पाएं और सीधे कार्रवाई करें।",
     "about.btn": "परिसर देखें",
 
     // Marquee
@@ -379,7 +379,7 @@ export const TRANSLATIONS: Record<Language, Record<string, any>> = {
     "about.pill": "முக்கிய நோக்கம்",
     "about.title1": "தேடுவதை நிறுத்துங்கள்,",
     "about.title2": "கேட்கத் தொடங்குங்கள்.",
-    "about.desc": "கல்லூரி தகவல்கள் பல இடங்களில் சிதறிக்கிடக்கின்றன—வருகைப்பதிவு ஒரு போர்ட்டலில், விதிகள் 80 பக்க PDF-களில், கிளப் தகவல்கள் வாட்ஸ்அப் குழுக்களில். ORBYT இவற்றை ஒன்றாக இணைக்கிறது. எளிய மொழியில் கேள்வி கேளுங்கள், உடனடி அதிகாரப்பூர்வ பதில் பெறுங்கள்.",
+    "about.desc": "கல்லூரி தகவல்கள் போர்ட்டல்கள், PDFகள் மற்றும் குரூப் சாட்களில் சிதறிக்கிடக்கின்றன. ORBYT இவற்றை ஒரே நுண்ணறிவு தளத்தில் இணைக்கிறது. எளிய மொழியில் கேளுங்கள், அதிகாரப்பூர்வ தரவின் அடிப்படையில் உடனடி பதில் மற்றும் தீர்வைப் பெறுங்கள்.",
     "about.btn": "வளாகத்தை ஆராயுங்கள்",
 
     // Marquee
