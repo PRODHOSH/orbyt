@@ -7,6 +7,13 @@ import { getTransportRoutes } from "@/lib/supabase-queries";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
+import dynamic from "next/dynamic";
+
+const TransportMap = dynamic(() => import("@/components/TransportMap"), { 
+  ssr: false,
+  loading: () => <div className="flex-1 w-full h-full flex items-center justify-center bg-slate-100 dark:bg-slate-900"><Loader2 className="h-6 w-6 animate-spin text-blue-500" /></div>
+});
+
 export default function TransportPage() {
   const [routes, setRoutes] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
@@ -25,6 +32,8 @@ export default function TransportPage() {
   }, []);
 
   if (loading) return <div className="flex justify-center py-20"><Loader2 className="h-6 w-6 animate-spin text-muted-foreground" /></div>;
+
+  const currentRouteData = routes.find(r => r.id === selectedRoute);
 
   return (
     <div className="space-y-6 max-w-6xl mx-auto">
@@ -87,68 +96,11 @@ export default function TransportPage() {
                 </CardTitle>
               </CardHeader>
 
-              <div className="flex-1 relative bg-slate-100 dark:bg-slate-950 w-full h-full overflow-hidden">
-                {/* Grid Background */}
-                <div 
-                  className="absolute inset-0 opacity-20 dark:opacity-[0.15]" 
-                  style={{ 
-                    backgroundImage: "linear-gradient(to right, #94a3b8 1px, transparent 1px), linear-gradient(to bottom, #94a3b8 1px, transparent 1px)", 
-                    backgroundSize: "40px 40px" 
-                  }} 
-                />
-                
-                {/* SVG Route Line */}
-                <svg className="absolute inset-0 w-full h-full z-0" preserveAspectRatio="none">
-                  <path 
-                    d="M 10% 80% L 30% 60% L 60% 70% L 85% 20%" 
-                    fill="none" 
-                    stroke="currentColor" 
-                    className="text-blue-500/50 dark:text-blue-400/30"
-                    strokeWidth="6" 
-                    strokeLinecap="round" 
-                    strokeLinejoin="round" 
-                    strokeDasharray="12 12" 
-                  />
-                </svg>
-
-                {/* Stops */}
-                <div className="absolute left-[10%] top-[80%] -translate-x-1/2 -translate-y-1/2 z-10 flex flex-col items-center">
-                  <div className="h-4 w-4 bg-white dark:bg-slate-900 rounded-full border-4 border-blue-500 shadow-sm" />
-                  <span className="mt-2 text-xs font-bold bg-white/80 dark:bg-slate-900/80 px-2 py-0.5 rounded-full backdrop-blur">Campus North</span>
-                </div>
-                <div className="absolute left-[30%] top-[60%] -translate-x-1/2 -translate-y-1/2 z-10 flex flex-col items-center">
-                  <div className="h-4 w-4 bg-white dark:bg-slate-900 rounded-full border-4 border-blue-500 shadow-sm" />
-                  <span className="mt-2 text-xs font-bold bg-white/80 dark:bg-slate-900/80 px-2 py-0.5 rounded-full backdrop-blur">City Center</span>
-                </div>
-                <div className="absolute left-[60%] top-[70%] -translate-x-1/2 -translate-y-1/2 z-10 flex flex-col items-center">
-                  <div className="h-4 w-4 bg-white dark:bg-slate-900 rounded-full border-4 border-blue-500 shadow-sm" />
-                  <span className="mt-2 text-xs font-bold bg-white/80 dark:bg-slate-900/80 px-2 py-0.5 rounded-full backdrop-blur">Metro Station</span>
-                </div>
-                <div className="absolute left-[85%] top-[20%] -translate-x-1/2 -translate-y-1/2 z-10 flex flex-col items-center">
-                  <div className="h-4 w-4 bg-white dark:bg-slate-900 rounded-full border-4 border-blue-500 shadow-sm" />
-                  <span className="mt-2 text-xs font-bold bg-white/80 dark:bg-slate-900/80 px-2 py-0.5 rounded-full backdrop-blur">Tech Park</span>
-                </div>
-
-                {/* Animated Bus */}
-                <motion.div 
-                  className="absolute z-30 flex items-center justify-center h-10 w-10 bg-blue-600 text-white rounded-full shadow-[0_0_20px_rgba(37,99,235,0.6)]"
-                  style={{ top: "0%", left: "0%", x: "-50%", y: "-50%" }}
-                  animate={{ 
-                    left: ["10%", "30%", "60%", "85%"], 
-                    top: ["80%", "60%", "70%", "20%"] 
-                  }}
-                  transition={{ 
-                    duration: 15, 
-                    repeat: Infinity, 
-                    ease: "linear",
-                    times: [0, 0.33, 0.66, 1] 
-                  }}
-                >
-                  <Bus className="h-5 w-5" />
-                </motion.div>
+              <div className="flex-1 relative bg-slate-100 dark:bg-slate-950 w-full h-full overflow-hidden pt-[60px]">
+                <TransportMap route={currentRouteData} />
                 
                 {/* Traffic overlay indicator */}
-                <div className="absolute bottom-4 left-4 z-20 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md p-3 rounded-xl shadow-lg border text-xs space-y-2">
+                <div className="absolute bottom-4 left-4 z-20 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md p-3 rounded-xl shadow-lg border text-xs space-y-2 pointer-events-none">
                   <div className="font-semibold mb-1">Route Status</div>
                   <div className="flex items-center gap-2"><span className="w-8 h-1.5 rounded-full bg-emerald-500"></span> Normal Traffic</div>
                   <div className="flex items-center gap-2"><span className="w-8 h-1.5 rounded-full bg-amber-500"></span> Moderate Delay</div>
