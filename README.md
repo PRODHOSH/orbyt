@@ -15,6 +15,24 @@ Instead of navigating multiple systems, students and staff can manage their camp
 - **Integrated Campus Safety Layer:** Real-time incident reporting, SOS alerts, and emergency response workflows directly connected to campus administration and security.
 - **AI-Powered Discovery & Assistance:** A context-aware intelligence layer that parses official institutional handbooks, matches students to relevant opportunities, and provides instant answers backed by official citations.
 
+## Tech Stack
+
+- **Framework:** [Next.js 16](https://nextjs.org/) (App Router, Server Components)
+- **Frontend:** React 19, [Tailwind CSS v4](https://tailwindcss.com/), [Framer Motion](https://www.framer.com/motion/) (Animations)
+- **Database & Auth:** [Supabase](https://supabase.com/) (PostgreSQL, Row Level Security, Authentication)
+- **State Management:** Zustand
+- **AI Integration:** Google Generative AI (Gemini)
+
+## System Architecture
+
+ORBYT leverages a modern, server-first architecture tailored for security and speed:
+
+1. **Next.js App Router:** Powers the application with hybrid rendering (Server & Client Components) for optimal performance and SEO on public pages.
+2. **Role-Based Dashboards:** The application routing (`/dashboard/student`, `/dashboard/employee`, `/dashboard/admin`) is intrinsically linked to the user's role. 
+3. **Supabase & Row Level Security (RLS):** Data access is strictly controlled at the database level. Students only ever fetch their own records (attendance, grades, complaints), while faculty and administration have elevated access based on RLS policies.
+4. **Server-Side Data Aggregation:** The Admin Command Center uses secure server-side fetching with the `SERVICE_ROLE_KEY` to bypass client-side RLS safely. This allows for complex macro-analytics and campus-wide reporting without exposing sensitive keys to the browser.
+5. **Localization Context:** A central `LanguageContext` drives the multilingual interface (English, Hindi, Tamil) without needing heavy third-party i18n libraries, keeping the bundle size small.
+
 ## Team: Black Squad
 
 - **Prodhosh V S** - Lead
