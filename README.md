@@ -27,11 +27,52 @@ Instead of navigating multiple systems, students and staff can manage their camp
 
 ORBYT leverages a modern, server-first architecture tailored for security and speed:
 
-1. **Next.js App Router:** Powers the application with hybrid rendering (Server & Client Components) for optimal performance and SEO on public pages.
-2. **Role-Based Dashboards:** The application routing (`/dashboard/student`, `/dashboard/employee`, `/dashboard/admin`) is intrinsically linked to the user's role. 
-3. **Supabase & Row Level Security (RLS):** Data access is strictly controlled at the database level. Students only ever fetch their own records (attendance, grades, complaints), while faculty and administration have elevated access based on RLS policies.
-4. **Server-Side Data Aggregation:** The Admin Command Center uses secure server-side fetching with the `SERVICE_ROLE_KEY` to bypass client-side RLS safely. This allows for complex macro-analytics and campus-wide reporting without exposing sensitive keys to the browser.
-5. **Localization Context:** A central `LanguageContext` drives the multilingual interface (English, Hindi, Tamil) without needing heavy third-party i18n libraries, keeping the bundle size small.
+```mermaid
+graph TD
+    %% Entities
+    User[Client / Browser]
+    
+    %% Next.js Core
+    subgraph Frontend [Next.js 16 App Router]
+        direction TB
+        UI[React 19 Components]
+        SC[Server Components]
+        SA[Server Actions]
+        
+        UI -->|Triggers| SA
+        SC -->|Renders| UI
+    end
+    
+    %% Backend & DB
+    subgraph Backend [Supabase Backend]
+        direction TB
+        Auth[Supabase Auth]
+        RLS{Row Level Security}
+        DB[(PostgreSQL Database)]
+        
+        Auth -->|Secures| RLS
+        RLS -->|Filters| DB
+    end
+    
+    %% Integrations
+    Gemini[Google Gemini AI]
+    
+    %% Connections
+    User -->|Interacts| Frontend
+    User -.->|Client SDK| Auth
+    
+    %% Role Based Routing
+    UI -->|Role Based Access| Auth
+    
+    %% Server side fetching
+    SC -->|Secure Data Fetching| RLS
+    SA -->|Admin Analytics| DB
+    SA -.->|SERVICE_ROLE_KEY| DB
+    
+    %% AI Connection
+    SA -->|Prompt & Context| Gemini
+    Gemini -->|AI Assistance| SA
+```
 
 ## Team: Black Squad
 
